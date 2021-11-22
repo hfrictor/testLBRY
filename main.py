@@ -2,6 +2,7 @@ import kivy
 import requests
 import pprint
 
+from kivy.uix.spinner import Spinner
 from kivy.uix.textinput import TextInput
 
 kivy.require('1.0.6')
@@ -61,8 +62,21 @@ class BookNetApp(App):
         title_field_input = TextInput(text="Title")
         form_layout.add_widget(title_field_input)
 
+        FORMAT_VALUE_CHOICES = (
+            'epub', 'mobi', 'pdf'
+        )
+        format_field_input = Spinner(text=FORMAT_VALUE_CHOICES[0], values=FORMAT_VALUE_CHOICES)
+        form_layout.add_widget(format_field_input)
+
+
         author_field_input = TextInput(text="Author")
         form_layout.add_widget(author_field_input)
+
+        GENRE_VALUE_CHOICES = (
+            'Scifi', 'True Crime', 'Some really long genre that someone might put in.'
+        )
+        genre_field_input = Spinner(text=GENRE_VALUE_CHOICES[0], values=GENRE_VALUE_CHOICES)
+        form_layout.add_widget(genre_field_input)
 
         othertags_field_input = TextInput(text="Other Tags")
         form_layout.add_widget(othertags_field_input)
@@ -72,6 +86,7 @@ class BookNetApp(App):
 
         self.update_staus_label()
         return layout
+    #some minor change
 
 
 
